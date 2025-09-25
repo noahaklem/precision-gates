@@ -1,32 +1,41 @@
-import Hero from '@/components/Hero'
-import Services from '@/components/Services'
-import QuoteForm from '@/components/QuoteForm'
+// app/page.tsx
+export const metadata = {
+  title: 'Precision Gates & Automation',
+  description: 'Site under construction. Get a fast quote today.',
+}
 
-export default function Page(){
+export default function Page() {
   return (
-    <>
-      <Hero />
-      <Services />
-      <section id="gallery" className="section">
-        <h2 className="text-3xl font-semibold">Gallery</h2>
-        <p className="text-gray-300 mt-2">Drop your real project photos here (WebP recommended).</p>
-        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {/* Replace with real <Image/> components later */}
-          {Array.from({length:4}).map((_,i)=>(<div key={i} className="aspect-video rounded-2xl border border-white/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent)]" />))}
+    <main className="min-h-[80vh] grid place-items-center px-4 bg-[#0A0A0A] text-white">
+      <div className="max-w-2xl text-center">
+        <h1 className="text-4xl md:text-5xl font-bold tracking-tight">
+          Precision Gates & Automation
+        </h1>
+        <p className="mt-4 text-gray-300">
+          Our new website is on the way. In the meantime, we’re open and taking projects.
+        </p>
+
+        <div className="mt-8 grid gap-3 sm:grid-cols-2">
+          <a
+            href="tel:+17204279585"
+            className="rounded-2xl bg-white text-black px-5 py-3 font-medium"
+          >
+            Call (720) 427-9585
+          </a>
+          <a
+            href="mailto:info@pgagates.com"
+            className="rounded-2xl border border-white/20 px-5 py-3 font-medium"
+          >
+            Email: info@pgagates.com
+          </a>
         </div>
-      </section>
-      <section id="about" className="section">
-        <h2 className="text-3xl font-semibold">About Precision Gates</h2>
-        <p className="text-gray-300 mt-2 max-w-3xl">We craft high-quality, code-compliant gates with expert automation. Clean installs, neat wiring, and responsive support across Colorado.</p>
-      </section>
-      <section id="contact" className="section grid gap-8 md:grid-cols-2">
-        <div>
-          <h2 className="text-3xl font-semibold">Request a Quote</h2>
-          <p className="text-gray-300 mt-2">Prefer to call? <a href="tel:+15555555555" className="underline">(555) 555-5555</a></p>
-        </div>
-        <QuoteForm />
-      </section>
-    </>
+
+        <p className="mt-6 text-xs text-gray-500">
+          Licensed & Insured • Clean Installs • Rapid Repairs
+        </p>
+      </div>
+    </main>
   )
 }
+
 
