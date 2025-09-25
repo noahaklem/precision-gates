@@ -17,10 +17,10 @@ export default function Page() {
 
         <div className="mt-8 grid gap-3 sm:grid-cols-2">
           <a
-            href="tel:+17204279585"
+            href="tel:+17209032925"
             className="rounded-2xl bg-white text-black px-5 py-3 font-medium"
           >
-            Call: (720) 427-9585
+            Call: (720) 903-2925
           </a>
           <a
             href="mailto:info@pgagates.com"
