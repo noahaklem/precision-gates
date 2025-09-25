@@ -9,12 +9,12 @@ export default function Footer() {
         <div>
           <div className="font-semibold text-white">Contact</div>
           <p>Denver, CO</p>
-          <p>Phone: (555) 555-5555</p>
+          <p>Phone: (720) 427-9585</p>
           <p>Email: info@pgagates.com</p>
         </div>
         <div>
           <div className="font-semibold text-white">Hours</div>
-          <p>Mon–Fri: 8am–5pm</p>
+          <p>Mon–Fri: 9am–5pm</p>
           <p>Emergency repairs available</p>
         </div>
       </div>

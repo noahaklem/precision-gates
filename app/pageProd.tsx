@@ -1,6 +1,6 @@
-import Hero from '@/components/Hero'
-import Services from '@/components/Services'
-import QuoteForm from '@/components/QuoteForm'
+import Hero from '../components/Hero'
+import Services from '../components/Services'
+import QuoteForm from '../components/QuoteForm'
 
 export default function Page(){
   return (
