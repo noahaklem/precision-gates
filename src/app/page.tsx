@@ -20,7 +20,7 @@ export default function Page() {
             href="tel:+17204279585"
             className="rounded-2xl bg-white text-black px-5 py-3 font-medium"
           >
-            Call (720) 427-9585
+            Call: (720) 427-9585
           </a>
           <a
             href="mailto:info@pgagates.com"
