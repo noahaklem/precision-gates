@@ -1,18 +1,73 @@
 import Hero from '../components/Hero'
 import Services from '../components/Services'
 import QuoteForm from '../components/QuoteForm'
+import Image from 'next/image'
+import { getLocalImages } from '@/lib/getLocalImages'
+import { headers } from 'next/headers'
 
-export default function Page(){
+// async function getImages() {
+//   const h = await headers();
+//   const host = h.get("host");
+//   const protocol = process.env.VERCEL ? "https" : "http";
+
+//   const res = await fetch(`${protocol}://${host}/api/gallery`, { cache: "no-store" });
+//   if (!res.ok) throw new Error("Failed to load gallery");
+//   return res.json();
+// }
+
+export default async function Page(){
+  const images = await getLocalImages();
+  const site = "https://pgagates.com";
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "ImageGallery",
+    name: "Precision Gates & Automation — Recent Work",
+    description:
+      "A collection of custom gates, automation, and access control installations by Precision Gates & Automation across Colorado.",
+    author: {
+      "@type": "Organization",
+      name: "Precision Gates & Automation",
+      url: site
+    },
+    image: images.map((img) => ({
+      "@type": "ImageObject",
+      contentUrl: site + img.src,
+      caption: img.caption || img.alt,
+      description: img.alt,
+      locationCreated: img.location
+    }))
+  };
+  
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Hero />
       <Services />
       <section id="gallery" className="section">
-        <h2 className="text-3xl font-semibold">Gallery</h2>
-        <p className="text-gray-300 mt-2">Drop your real project photos here (WebP recommended).</p>
-        <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {/* Replace with real <Image/> components later */}
-          {Array.from({length:4}).map((_,i)=>(<div key={i} className="aspect-video rounded-2xl border border-white/10 bg-[linear-gradient(135deg,rgba(255,255,255,0.08),transparent)]" />))}
+        <h2 className="text-3xl font-semibold">Recent Work</h2>
+        <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {images.map((img) => (
+            <figure key={img.src} className="space-y-3">
+              <div className="relative aspect-video">
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  sizes="(max-width: 1024px) 50vw, 33vw"
+                  className="rounded-2xl object-cover border border-white/10"
+                />
+              </div>
+              {img.caption && (
+                <figcaption className="text-sm text-gray-400">
+                  {img.caption}
+                  {img.location ? ` — ${img.location}` : ""}
+                </figcaption>
+              )}
+            </figure>
+          ))}
         </div>
       </section>
       <section id="about" className="section">
@@ -22,7 +77,7 @@ export default function Page(){
       <section id="contact" className="section grid gap-8 md:grid-cols-2">
         <div>
           <h2 className="text-3xl font-semibold">Request a Quote</h2>
-          <p className="text-gray-300 mt-2">Prefer to call? <a href="tel:+15555555555" className="underline">(555) 555-5555</a></p>
+          <p className="text-gray-300 mt-2">Prefer to call? <a href="tel:+7209032925" className="underline">(720) 903-2925</a></p>
         </div>
         <QuoteForm />
       </section>
