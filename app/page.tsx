@@ -81,6 +81,26 @@ export default async function Page(){
         </div>
         <QuoteForm />
       </section>
+      <section id="service-areas" className="section bg-brand-dark text-white rounded-2xl border border-white/10">
+        <h2 className="text-3xl font-semibold">Service Areas</h2>
+        <p className="text-gray-300 mt-2 max-w-3xl">
+          We proudly serve homeowners, HOAs, and businesses across Colorado.
+        </p>
+        <ul className="grid sm:grid-cols-2 md:grid-cols-3 gap-3 mt-6 text-gray-400">
+          <li>Denver</li>
+          <li>Aurora</li>
+          <li>Littleton</li>
+          <li>Highlands Ranch</li>
+          <li>Lakewood</li>
+          <li>Arvada</li>
+          <li>Westminster</li>
+          <li>Parker</li>
+          <li>Castle Rock</li>
+          <li>Boulder</li>
+          <li>Commerce City</li>
+          <li>Englewood</li>
+        </ul>
+      </section>
     </>
   )
 }

@@ -1,3 +1,4 @@
+// lib/getLocalImages.ts
 import fs from "fs";
 import path from "path";
 
@@ -12,6 +13,7 @@ export type GalleryImage = {
   tags?: string[];
   createdAt?: string;
   location?: string;
+  featured?: boolean;
 };
 
 export async function getLocalImages(): Promise<GalleryImage[]> {
@@ -22,7 +24,6 @@ export async function getLocalImages(): Promise<GalleryImage[]> {
     return [];
   }
 
-  // Load metadata.json if present
   let meta: Record<string, Partial<GalleryImage>> = {};
   try {
     const raw = await fs.promises.readFile(META_PATH, "utf8");
@@ -31,23 +32,29 @@ export async function getLocalImages(): Promise<GalleryImage[]> {
 
   const images = files
     .filter((f) => ALLOWED.has(path.extname(f).toLowerCase()))
-    .sort() // rename files to control order; change to .sort().reverse() if needed
+    .sort()
     .map((filename) => {
       const m = meta[filename] || {};
-      const fallbackAlt = filename
-        .replace(/\.[^.]+$/, "")
-        .replace(/[-_]/g, " ")
-        .trim();
+      const fallbackAlt = filename.replace(/\.[^.]+$/, "").replace(/[-_]/g, " ").trim();
       return {
         src: `/gallery/${filename}`,
         alt: m.alt || fallbackAlt,
         caption: m.caption,
         tags: m.tags,
         createdAt: m.createdAt,
-        location: m.location
+        location: m.location,
+        featured: m.featured === true
       } as GalleryImage;
     });
 
   return images;
 }
+
+// Optional convenience helper for hero picks
+export async function getHeroCandidates(): Promise<GalleryImage[]> {
+  const all = await getLocalImages();
+  const featured = all.filter((i) => i.featured);
+  return featured.length ? featured : all; // fallback if none flagged yet
+}
+
 

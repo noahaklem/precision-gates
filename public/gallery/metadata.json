@@ -6,19 +6,21 @@
     "createdAt": "2025-01-07",
     "location": "Denver, CO"
   },
-  "commercial-slide-gate-warehouse-aurora.jpg": {
-    "alt": "Commercial slide gate at warehouse entrance in Aurora, CO",
+  "commercial-slide-gate-denver-zoo.jpg": {
+    "alt": "Commercial slide gate at Denver Zoo entrance in Denver, CO",
     "caption": "Heavy-duty slide gate with loop detectors and photo eyes.",
     "tags": ["commercial", "slide", "safety"],
     "createdAt": "2025-01-03",
-    "location": "Aurora, CO"
+    "location": "Denver, CO",
+    "featured": true
   },
   "security-storage-arm-gate-lakewood.jpg": {
     "alt": "Security arm gate protecting commercial lot in Lakewood, CO",
     "caption": "Security arm with remote access integration.",
     "tags": ["commercial", "arm", "security"],
     "createdAt": "2025-01-10",
-    "location": "Lakewood, CO"
+    "location": "Lakewood, CO",
+    "featured": true
   },
   "security-gate-lakewood.jpg": {
     "alt": "Security gate protecting commercial lot in Lakewood, CO",
@@ -39,7 +41,8 @@
     "caption": "Decorative wood-frame gate with automated swing operator.",
     "tags": ["residential", "swing", "decorative"],
     "createdAt": "2025-01-12",
-    "location": "Golden, CO"
+    "location": "Golden, CO",
+    "featured": true
   },
   "industrial-parking-gate-thornton.jpg": {
     "alt": "Industrial parking gate in Thornton, CO",
@@ -53,7 +56,8 @@
     "caption": "Elegant chainlink design with slide automation.",
     "tags": ["residential", "slide", "chainlink"],
     "createdAt": "2025-01-17",
-    "location": "Littleton, CO"
+    "location": "Littleton, CO",
+    "featured": true
   },
   "slide-gate-storage-facility-commerce-city.jpg": {
     "alt": "Slide gate at storage facility in Commerce City, CO",
@@ -67,7 +71,8 @@
     "caption": "Lightweight aluminum gate with app-based access control.",
     "tags": ["residential", "swing", "access-control"],
     "createdAt": "2025-01-20",
-    "location": "Parker, CO"
+    "location": "Parker, CO",
+    "featured": true
   },
   "swing-gate-hoa-entry-centennial.jpg": {
     "alt": "Automated swing gate at HOA entry in Centennial, CO",
