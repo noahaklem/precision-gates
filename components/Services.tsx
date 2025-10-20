@@ -6,7 +6,7 @@ const services = [
 ]
 export default function Services(){
   return (
-    <section id="services" className="section">
+    <section id="services" className="section container">
       <h2 className="text-3xl font-semibold">Our Services</h2>
       <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
         {services.map(s => (

@@ -2,6 +2,7 @@ import Hero from '../components/Hero'
 import Services from '../components/Services'
 import QuoteForm from '../components/QuoteForm'
 import Image from 'next/image'
+import GalleryGrid from '@/components/GalleryGrid'
 import { getLocalImages } from '@/lib/getLocalImages'
 import { headers } from 'next/headers'
 
@@ -46,42 +47,24 @@ export default async function Page(){
       />
       <Hero />
       <Services />
-      <section id="gallery" className="section">
+      <section id="gallery" className="section container">
         <h2 className="text-3xl font-semibold">Recent Work</h2>
-        <div className="mt-6 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {images.map((img) => (
-            <figure key={img.src} className="space-y-3">
-              <div className="relative aspect-video">
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  fill
-                  sizes="(max-width: 1024px) 50vw, 33vw"
-                  className="rounded-2xl object-cover border border-white/10"
-                />
-              </div>
-              {img.caption && (
-                <figcaption className="text-sm text-gray-400">
-                  {img.caption}
-                  {img.location ? ` — ${img.location}` : ""}
-                </figcaption>
-              )}
-            </figure>
-          ))}
+        <div className="mt-6 grid gap-6">
+          <GalleryGrid images={images} initial={9} />
         </div>
       </section>
-      <section id="about" className="section">
+      <section id="about" className="section container">
         <h2 className="text-3xl font-semibold">About Precision Gates</h2>
         <p className="text-gray-300 mt-2 max-w-3xl">We craft high-quality, code-compliant gates with expert automation. Clean installs, neat wiring, and responsive support across Colorado.</p>
       </section>
-      <section id="contact" className="section grid gap-8 md:grid-cols-2">
+      <section id="contact" className="section container grid gap-8 md:grid-cols-2">
         <div>
           <h2 className="text-3xl font-semibold">Request a Quote</h2>
           <p className="text-gray-300 mt-2">Prefer to call? <a href="tel:+7209032925" className="underline">(720) 903-2925</a></p>
         </div>
         <QuoteForm />
       </section>
-      <section id="service-areas" className="section bg-brand-dark text-white rounded-2xl border border-white/10">
+      <section id="service-areas" className="section container bg-brand-dark text-white rounded-2xl border border-white/10">
         <h2 className="text-3xl font-semibold">Service Areas</h2>
         <p className="text-gray-300 mt-2 max-w-3xl">
           We proudly serve homeowners, HOAs, and businesses across Colorado.

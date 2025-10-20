@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer className="border-t border-white/10">
+    <footer className="section container border-t border-white/10">
       <div className="container py-10 grid gap-6 md:grid-cols-3 text-sm text-gray-300">
         <div>
           <div className="font-semibold text-white">Precision Gates & Automation</div>
