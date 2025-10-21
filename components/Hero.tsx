@@ -34,7 +34,7 @@ export default async function Hero() {
           <Link href="#contact" className="px-5 py-3 rounded-2xl bg-white text-black shadow-soft hover:bg-gray-200 transition">
             Request a Quote
           </Link>
-          <Link href="#gallery" className="px-5 py-3 rounded-2xl border border-white/30 hover:bg-white/10 transition">
+          <Link href="#gallery" className="text-gray-100 px-5 py-3 rounded-2xl border border-white/50 hover:bg-white/10 transition">
             See Projects
           </Link>
         </div>

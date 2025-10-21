@@ -6,17 +6,13 @@ const services = [
 ]
 export default function Services(){
   return (
-    <section id="services" className="section container relative
-          before:absolute before:inset-0 before:-z-10
-          before:bg-[radial-gradient(circle_at_1px_1px,rgba(255,255,255,0.06)_1px,transparent_1px)]
-          before:bg-[length:24px_24px]
-    ">
+    <section id="services" className="section container">
       <h2 className="text-3xl font-semibold">Our Services</h2>
       <div className="mt-6 grid sm:grid-cols-2 lg:grid-cols-4">
         {services.map(s => (
-          <div key={s.title} className="rounded-2xl border border-white/10 bg-brand-dark p-6 hover:shadow-soft transition">
-            <div className="font-semibold">{s.title}</div>
-            <p className="text-sm text-gray-300 mt-2">{s.desc}</p>
+          <div key={s.title} className="rounded-2xl border border-white/10 p-6 hover:shadow-soft transition">
+            <div className="text-gray-800 font-bold">{s.title}</div>
+            <p className="text-sm text-gray-500 mt-1">{s.desc}</p>
           </div>
         ))}
       </div>

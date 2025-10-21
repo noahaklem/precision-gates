@@ -62,19 +62,19 @@ export default async function Page(){
         <h2 className="text-3xl font-semibold">About Precision Gates</h2>
         <p className="text-gray-300 mt-2 max-w-3xl">We craft high-quality, code-compliant gates with expert automation. Clean installs, neat wiring, and responsive support across Colorado.</p>
       </section>
-      <section id="contact" className="section container grid gap-8 md:grid-cols-2">
+      <section id="contact" className="section-tight container grid gap-8 md:grid-cols-2">
         <div>
           <h2 className="text-3xl font-semibold">Request a Quote</h2>
-          <p className="text-gray-300 mt-2">Prefer to call? <a href="tel:+7209032925" className="underline">(720) 903-2925</a></p>
+          <p className="text-gray-400 mt-2">Prefer to call? <a href="tel:+7209032925" className="underline">(720) 903-2925</a></p>
         </div>
         <QuoteForm />
       </section>
-      <section id="service-areas" className="section container bg-brand-dark text-white rounded-2xl border border-white/10">
+      <section id="service-areas" className="section-tight container text-gray-700 border border-black/10">
         <h2 className="text-3xl font-semibold">Service Areas</h2>
-        <p className="text-gray-300 mt-2 max-w-3xl">
+        <p className="text-gray-400 mt-2 max-w-3xl">
           We proudly serve homeowners, HOAs, and businesses across Colorado.
         </p>
-        <ul className="grid sm:grid-cols-2 md:grid-cols-3 gap-3 mt-6 text-gray-400">
+        <ul className="grid sm:grid-cols-2 md:grid-cols-3 gap-3 mt-6 text-gray-500">
           <li>Denver</li>
           <li>Aurora</li>
           <li>Littleton</li>

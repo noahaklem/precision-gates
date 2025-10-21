@@ -139,13 +139,15 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
 
   return (
     <html lang="en">
-      <body
-        className={`min-h-screen flex flex-col bg-brand-black text-white ${geistSans.variable} ${geistMono.variable}`}
-      >
-        {/* JSON-LD scripts should be inside <body> */}
+      <body className={`min-h-screen flex flex-col bg-brand-black text-white ${geistSans.variable} ${geistMono.variable}`}>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteJsonLd) }} />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(businessJsonLd) }} />
-        <main className="flex-1">{children}</main>
+
+        {/* Apply consistent spacing between sections here */}
+        <main className="flex-1">
+          {children}
+        </main>
+
         <StickyContactBar />
         <Footer />
       </body>

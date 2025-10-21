@@ -50,7 +50,7 @@ export default function GalleryGrid({
 
       {/* Fade hint when collapsed */}
       {!expanded && remaining > 0 && (
-        <div className="pointer-events-none absolute bottom-20 left-0 right-0 h-24 bg-gradient-to-b from-transparent to-brand-black/80 lg:to-brand-black" />
+        <div className="pointer-events-none absolute bottom-20 left-0 right-0 h-24" />
       )}
 
       {remaining > 0 && (
