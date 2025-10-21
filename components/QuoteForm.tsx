@@ -9,7 +9,18 @@ declare global {
 
 export default function QuoteForm(){
   const [status, setStatus] = useState<'idle'|'sending'|'sent'|'error'>('idle')
-  const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY!
+  const [ready, setReady] = useState(false)
+  const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || ''
+
+
+  useEffect(() => {
+    if (!siteKey) return
+    const check = () => {
+      if (window.grecaptcha?.render) setReady(true)
+      else setTimeout(check, 200)
+    }
+    check()
+  }, [siteKey])
 
   // simple helper to read the v2 token
   function getToken() {
@@ -21,12 +32,15 @@ export default function QuoteForm(){
     e.preventDefault()
     if (status === 'sending') return
 
-    const token = getToken()
-    if (!token) {
-      // force validation if user didn't click the checkbox yet
-      window.grecaptcha?.execute?.() // (not used by v2 checkbox, but harmless)
-      alert('Please complete the reCAPTCHA.')
+    if (!siteKey) {
+      alert('reCAPTCHA not configured. Please try again later.')
       return
+    }
+
+    const token = getToken()
+      if (!token) {
+        alert('Please complete the reCAPTCHA.')
+        return
     }
 
     setStatus('sending')
@@ -55,10 +69,9 @@ export default function QuoteForm(){
   return (
     <>
       {/* Load reCAPTCHA v2 (checkbox) */}
-      <Script
-        src="https://www.google.com/recaptcha/api.js"
-        strategy="afterInteractive"
-      />
+      {siteKey && (
+        <Script src="https://www.google.com/recaptcha/api.js" strategy="afterInteractive" />
+      )}
       <form onSubmit={onSubmit} className="rounded-2xl border border-white/10 bg-brand-dark p-6 grid gap-4">
         {/* Honeypot (hidden) */}
         <input name="company" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
@@ -80,16 +93,20 @@ export default function QuoteForm(){
         <textarea name="message" rows={4} placeholder="Tell us about your project…" className="px-3 py-2 rounded-xl bg-black/40 border border-white/10" />
 
         {/* reCAPTCHA v2 checkbox widget */}
-        <div className="mt-2">
-          <div className="g-recaptcha" data-sitekey={siteKey} />
-        </div>
+        {siteKey ? (
+          <div className="mt-2">
+            <div className="g-recaptcha" data-sitekey={siteKey} />
+          </div>
+        ) : (
+          <p className="mt-2 text-sm text-red-400">reCAPTCHA is not configured. Set NEXT_PUBLIC_RECAPTCHA_SITE_KEY.</p>
+        )}
 
         <button
-          disabled={status === 'sending'}
+          disabled={status === 'sending' || !siteKey || !ready}
           className="px-5 py-3 rounded-2xl bg-white text-black shadow-soft disabled:opacity-60"
           aria-live="polite"
         >
-          {status==='idle' && 'Send Request'}
+          {status==='idle' && (siteKey ? (ready ? 'Send Request' : 'Loading…') : 'Captcha missing')}
           {status==='sending' && 'Sending…'}
           {status==='sent' && 'Request Sent ✓'}
           {status==='error' && 'Try Again'}

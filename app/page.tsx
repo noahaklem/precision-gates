@@ -1,11 +1,14 @@
-import Hero from '../components/Hero'
-import Services from '../components/Services'
-import QuoteForm from '../components/QuoteForm'
+import Hero from '@/components/Hero'
+import Services from '@/components/Services'
+import QuoteForm from '@/components/QuoteForm'
+import WhyUs from '@/components/WhyUs'
 import Image from 'next/image'
 import GalleryGrid from '@/components/GalleryGrid'
 import { getLocalImages } from '@/lib/getLocalImages'
 import { headers } from 'next/headers'
+import Testimonials from '@/components/Testimonials'
 
+// Fetch from Cloudinary if you want to use external API
 // async function getImages() {
 //   const h = await headers();
 //   const host = h.get("host");
@@ -47,12 +50,14 @@ export default async function Page(){
       />
       <Hero />
       <Services />
+      <WhyUs />
       <section id="gallery" className="section container">
         <h2 className="text-3xl font-semibold">Recent Work</h2>
         <div className="mt-6 grid gap-6">
           <GalleryGrid images={images} initial={9} />
         </div>
       </section>
+      <Testimonials />
       <section id="about" className="section container">
         <h2 className="text-3xl font-semibold">About Precision Gates</h2>
         <p className="text-gray-300 mt-2 max-w-3xl">We craft high-quality, code-compliant gates with expert automation. Clean installs, neat wiring, and responsive support across Colorado.</p>
