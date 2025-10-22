@@ -3,8 +3,8 @@ export default function WhyUs() {
   const items = [
     'Clean welds, powder coat options',
     'Code-compliant loops & photo eyes',
-    'Neat control panels / labeled wiring',
-    'Access control: keypad, RFID, app',
+    'Neat control panels',
+    'Access control: keypad, RFID, Intercom',
     'Preventative maintenance plans',
     'Licensed • Insured • Background-checked'
   ];
