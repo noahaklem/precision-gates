@@ -10,17 +10,20 @@ export default function AdminPage() {
     setBusy(true); setMsg(null)
 
     const formData = new FormData(e.currentTarget)
+// inside onSubmit
     try {
       const res = await fetch('/admin/api/upload', { method: 'POST', body: formData })
-      const json = await res.json()
+      const json: { ok?: boolean; error?: string } = await res.json()
       if (!res.ok) throw new Error(json?.error || 'Upload failed')
       setMsg('✅ Added! A new deploy will start in a moment.')
       e.currentTarget.reset()
-    } catch (err: any) {
-      setMsg(`❌ ${err.message || 'Upload failed'}`)
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : 'Upload failed'
+      setMsg(`❌ ${message}`)
     } finally {
       setBusy(false)
     }
+
   }
 
   return (

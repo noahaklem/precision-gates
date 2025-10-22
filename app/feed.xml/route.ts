@@ -1,80 +1,56 @@
-// app/feed.xml/route.ts
-import fs from "fs";
-import path from "path";
+import { NextResponse } from 'next/server'
+import fs from 'fs'
+import path from 'path'
 
-const SITE = "https://pgagates.com";
-const META_PATH = path.join(process.cwd(), "public", "gallery", "metadata.json");
-
-type Item = {
-  key: string; // filename
-  alt: string;
-  caption?: string;
-  location?: string;
-  createdAt?: string; // ISO date (YYYY-MM-DD)
-};
+type MetaEntry = {
+  alt: string
+  caption?: string
+  tags?: string[]
+  createdAt?: string
+  location?: string
+}
 
 export async function GET() {
-  // Load metadata.json
-  let meta: Record<string, any> = {};
-  try {
-    const raw = await fs.promises.readFile(META_PATH, "utf8");
-    meta = JSON.parse(raw);
-  } catch {
-    // empty feed if no metadata found
-    meta = {};
-  }
+  const site = 'https://pgagates.com'
+  const galleryDir = path.join(process.cwd(), 'public', 'gallery')
+  const metaPath = path.join(process.cwd(), 'public', 'metadata.json')
 
-  // Build items array
-  const items: Item[] = Object.entries(meta).map(([filename, m]: any) => ({
-    key: filename,
-    alt: m.alt || filename,
-    caption: m.caption,
-    location: m.location,
-    createdAt: m.createdAt,
-  }));
+  const files = fs.existsSync(galleryDir)
+    ? await fs.promises.readdir(galleryDir)
+    : []
 
-  // Sort newest first using createdAt (fallback to filename)
-  items.sort((a, b) => {
-    const da = Date.parse(a.createdAt || "") || 0;
-    const db = Date.parse(b.createdAt || "") || 0;
-    return db - da;
-  });
+  const meta: Record<string, MetaEntry> = fs.existsSync(metaPath)
+    ? JSON.parse(await fs.promises.readFile(metaPath, 'utf8')) as Record<string, MetaEntry>
+    : {}
 
-  const updated = items[0]?.createdAt || new Date().toISOString();
+  const items = files
+    .filter(f => /\.(jpe?g|png|webp|jpeg)$/i.test(f))
+    .map((f) => {
+      const m = meta[f]
+      const title = m?.caption || m?.alt || f
+      const date = m?.createdAt || new Date().toISOString().slice(0, 10)
+      const link = `${site}/gallery/${encodeURIComponent(f)}`
+      return { title, date, link, desc: m?.alt ?? '' }
+    })
 
-  // Build RSS XML
-  const xml =
-    `<?xml version="1.0" encoding="UTF-8"?>` +
-    `<rss version="2.0">` +
-    `<channel>` +
-    `<title>Precision Gates & Automation — Recent Projects</title>` +
-    `<link>${SITE}</link>` +
-    `<description>New gate and access control installations across Colorado.</description>` +
-    `<language>en-us</language>` +
-    `<lastBuildDate>${new Date(updated).toUTCString()}</lastBuildDate>` +
-    items
-      .slice(0, 50) // cap feed length
-      .map((item) => {
-        const url = `${SITE}/gallery/${encodeURIComponent(item.key)}`;
-        const title = item.alt;
-        const desc = `${item.caption || item.alt}${item.location ? " — " + item.location : ""}`;
-        const pubDate = item.createdAt
-          ? new Date(item.createdAt).toUTCString()
-          : new Date().toUTCString();
+  const rss =
+`<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+<channel>
+<title>Precision Gates & Automation — Recent Work</title>
+<link>${site}</link>
+<description>New gallery items and installations</description>
+${items.map(it => `
+  <item>
+    <title><![CDATA[${it.title}]]></title>
+    <link>${it.link}</link>
+    <guid>${it.link}</guid>
+    <pubDate>${new Date(it.date).toUTCString()}</pubDate>
+    <description><![CDATA[${it.desc}]]></description>
+  </item>`).join('')}
+</channel>
+</rss>`
 
-        // Use the public image URL as the guid/link
-        return (
-          `<item>` +
-          `<title><![CDATA[${title}]]></title>` +
-          `<link>${url}</link>` +
-          `<guid isPermaLink="false">${url}</guid>` +
-          `<pubDate>${pubDate}</pubDate>` +
-          `<description><![CDATA[${desc}]]></description>` +
-          `</item>`
-        );
-      })
-      .join("") +
-    `</channel></rss>`;
-
-  return new Response(xml, { headers: { "Content-Type": "application/rss+xml; charset=UTF-8" } });
+  return new NextResponse(rss, { headers: { 'Content-Type': 'application/xml' } })
 }
+

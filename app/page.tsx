@@ -2,10 +2,8 @@ import Hero from '@/components/Hero'
 import Services from '@/components/Services'
 import QuoteForm from '@/components/QuoteForm'
 import WhyUs from '@/components/WhyUs'
-import Image from 'next/image'
 import GalleryGrid from '@/components/GalleryGrid'
 import { getLocalImages } from '@/lib/getLocalImages'
-import { headers } from 'next/headers'
 import Testimonials from '@/components/Testimonials'
 
 // Fetch from Cloudinary if you want to use external API

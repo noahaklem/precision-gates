@@ -1,29 +1,38 @@
-import { NextResponse } from "next/server";
-import { v2 as cloudinary } from "cloudinary";
+import { NextResponse } from 'next/server'
+import fs from 'fs'
+import path from 'path'
 
-// CLOUDINARY_URL is auto-read by the SDK, no extra config needed.
+type Meta = {
+  alt: string
+  caption?: string
+  tags?: string[]
+  createdAt?: string
+  location?: string
+  hero?: boolean
+}
 
 export async function GET() {
-  // Everything in folder "pgagates" (adjust if you nest deeper)
-  const expression = 'folder:pgagates AND resource_type:image';
+  const galleryDir = path.join(process.cwd(), 'public', 'gallery')
+  const metaPath = path.join(process.cwd(), 'public', 'metadata.json')
 
-  const res = await cloudinary.search
-    .expression(expression)
-    .sort_by("created_at", "desc")
-    .max_results(100)          // raise/lower as needed
-    .execute();
+  const files = fs.existsSync(galleryDir)
+    ? await fs.promises.readdir(galleryDir)
+    : []
 
-  const items = res.resources.map((r: any) => ({
-    id: r.asset_id,
-    public_id: r.public_id,    // e.g. "pgagates/IMG_1011"
-    width: r.width,
-    height: r.height,
-    // Optimized URL: auto format and quality
-    url: `https://res.cloudinary.com/${cloudinary.config().cloud_name}/image/upload/f_auto,q_auto/${r.public_id}`,
-  }));
+  const meta: Record<string, Meta> = fs.existsSync(metaPath)
+    ? JSON.parse(await fs.promises.readFile(metaPath, 'utf8')) as Record<string, Meta>
+    : {}
 
-  return NextResponse.json(items, {
-    headers: { "Cache-Control": "s-maxage=60, stale-while-revalidate=300" },
-  });
+  const images = files
+    .filter(f => /\.(jpe?g|png|webp|jpeg)$/i.test(f))
+    .map(f => ({
+      src: `/gallery/${encodeURIComponent(f)}`,
+      alt: meta[f]?.alt ?? '',
+      caption: meta[f]?.caption,
+      location: meta[f]?.location,
+    }))
+
+  return NextResponse.json(images)
 }
+
 

@@ -4,8 +4,14 @@ import { useEffect, useState } from 'react';
 import Script from 'next/script';
 
 declare global {
-  interface Window { grecaptcha: any }
+  interface Window {
+    grecaptcha?: {
+      render?: unknown
+      reset?: () => void
+    }
+  }
 }
+
 
 export default function QuoteForm() {
   const [status, setStatus] = useState<'idle'|'sending'|'sent'|'error'>('idle');
