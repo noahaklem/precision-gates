@@ -1,6 +1,7 @@
 'use client';
 
 import { useRef, useState } from 'react';
+import TopBanner from '@/components/TopBanner';
 
 type UploadResponse = {
   ok: boolean;

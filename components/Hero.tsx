@@ -7,7 +7,6 @@ export const dynamic = 'force-dynamic';
 export default async function Hero() {
   const pool = await getHeroCandidates();
 
-  // choose up to 3 unique random slides from featured pool
   const pick: { src: string; alt: string }[] = [];
   const copy = [...pool];
   for (let i = 0; i < 3 && copy.length; i++) {
@@ -16,12 +15,25 @@ export default async function Hero() {
     pick.push({ src: p.src, alt: p.alt });
   }
   if (pick.length === 0) {
-    pick.push({ src: '/gallery/iron-driveway-gate-denver.jpg', alt: 'Custom gate installation in Colorado' });
+    pick.push({
+      src: '/gallery/custom-aluminum-gate-denver.jpg',
+      alt: 'Custom gate installation in Colorado',
+    });
   }
 
   return (
-    <section className="relative overflow-hidden h-[80vh] flex items-center justify-center text-center">
+    <section
+      className="
+        relative overflow-hidden
+        min-h-[85vh]                 
+        flex items-center justify-center text-center
+        pt-28 md:pt-36              
+      "
+    >
       <HeroSlideshow slides={pick} />
+
+      {/* Soft blend from white banner → hero image */}
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-24 md:h-28 bg-gradient-to-b from-white/80 via-white/30 to-transparent" />
 
       <div className="relative z-10 max-w-2xl px-6">
         <h1 className="text-4xl md:text-6xl font-bold text-white [text-shadow:_0_4px_18px_rgba(0,0,0,0.6)]">
@@ -31,10 +43,16 @@ export default async function Hero() {
           Custom gates & automation systems for residential, commercial, and industrial properties.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-4">
-          <Link href="#contact" className="px-5 py-3 rounded-2xl bg-white text-black shadow-soft hover:bg-gray-200 transition">
+          <Link
+            href="#contact"
+            className="px-5 py-3 rounded-2xl bg-white text-black shadow-soft hover:bg-gray-200 transition"
+          >
             Request a Quote
           </Link>
-          <Link href="#gallery" className="text-gray-100 px-5 py-3 rounded-2xl border border-white/50 hover:bg-white/10 transition">
+          <Link
+            href="#gallery"
+            className="text-gray-100 px-5 py-3 rounded-2xl border border-white/50 hover:bg-white/10 transition"
+          >
             See Projects
           </Link>
         </div>
@@ -43,10 +61,12 @@ export default async function Hero() {
         </div>
       </div>
 
-      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-24 bg-gradient-to-b from-transparent to-brand-black" />
+      {/* Slightly taller bottom fade */}
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 h-32 bg-gradient-to-b from-transparent to-brand-black" />
     </section>
   );
 }
+
 
 
 

@@ -70,7 +70,7 @@ export default function QuoteForm() {
 
       <form
         onSubmit={onSubmit}
-        className="rounded-2xl bg-brand-dark/95 border border-white/10 p-6 md:p-8 grid gap-5"
+        className="rounded-2xl z-51 bg-brand-dark/95 border border-white/10 p-6 md:p-8 grid gap-5"
       >
         {/* Honeypot */}
         <input name="company" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />

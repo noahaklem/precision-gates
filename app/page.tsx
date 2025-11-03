@@ -5,6 +5,7 @@ import WhyUs from '@/components/WhyUs'
 import GalleryGrid from '@/components/GalleryGrid'
 import { getLocalImages } from '@/lib/getLocalImages'
 import Testimonials from '@/components/Testimonials'
+import TopBanner from '@/components/TopBanner'
 
 // Fetch from Cloudinary if you want to use external API
 // async function getImages() {
@@ -46,6 +47,7 @@ export default async function Page(){
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
+      <TopBanner />
       <Hero />
       <Services />
       <WhyUs />

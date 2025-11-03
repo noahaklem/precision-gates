@@ -76,9 +76,9 @@ export async function POST(req: Request) {
     // --- end reCAPTCHA v2 verification ---
 
     const key = process.env.SENDGRID_API_KEY
-    const to = process.env.QUOTE_TO || 'admin@example.com'
-    const fromEmail = process.env.SENDGRID_FROM || 'no-reply@pgagates.com'
-    const fromName = 'Precision Gates Form'
+    const to = process.env.QUOTE_TO || 'info@pgagates.com'
+    const fromEmail = process.env.SENDGRID_FROM || 'info@pgagates.com'
+    const fromName = 'Precision Gates Information Request'
 
     const text = `
 New Quote Request

@@ -1,203 +1,147 @@
 {
-  "iron-driveway-gate-denver.jpg": {
-    "alt": "Iron driveway gate with keypad in Denver, CO",
-    "caption": "Residential swing gate with access keypad and safety sensors.",
-    "tags": ["residential", "swing", "access-control"],
-    "createdAt": "2024-03-07",
+  "ornamental-iron-swing-gate-decorative-columns-genessee.jpg": {
+    "alt": "Custom ornamental iron automated swing gate with decorative columns in Genesee, CO",
+    "caption": "Ornamental iron electric swing gate with decorative columns and clean automation.",
+    "tags": ["residential", "swing", "ornamental-iron", "automated", "electric-gate", "custom"],
+    "location": "Genesee, CO"
+  },
+  "chainlink-cantilever-slide-biased-grade-broomfield.jpg": {
+    "alt": "Automated chain-link cantilever slide gate with biased frame to match driveway grade in Broomfield, CO",
+    "caption": "Chain-link cantilever slide gate engineered with a biased frame for sloped driveway.",
+    "tags": ["commercial", "slide", "cantilever", "chain-link", "slope", "engineered"],
+    "location": "Broomfield, CO"
+  },
+  "aluminum-cantilever-enclosed-track-hbrace-denver.jpg": {
+    "alt": "Aluminum automated cantilever chain-link slide gate with enclosed track and H-Brace pedestal in Denver, CO",
+    "caption": "Aluminum cantilever slide with enclosed track system and H-Brace operator pedestal.",
+    "tags": ["commercial", "slide", "cantilever", "aluminum", "enclosed-track", "h-brace"],
     "location": "Denver, CO"
   },
-  "commercial-slide-gate-denver-zoo.jpg": {
-    "alt": "Commercial slide gate at Denver Zoo entrance in Denver, CO",
-    "caption": "Heavy-duty slide gate with loop detectors and photo eyes.",
-    "tags": ["commercial", "slide", "safety"],
-    "createdAt": "2023-11-03",
+  "industrial-aluminum-slide-privacy-screen-hydraulic-denver.jpg": {
+    "alt": "Industrial aluminum slide gate with privacy screen and hydraulic operator in Denver, CO",
+    "caption": "Industrial duty hydraulic slide operator with aluminum gate and privacy screening.",
+    "tags": ["industrial", "slide", "aluminum", "privacy-screen", "hydraulic", "electric-gate"],
     "location": "Denver, CO",
     "featured": true
   },
-  "security-storage-arm-gate-lakewood.jpg": {
-    "alt": "Security arm gate protecting commercial lot in Lakewood, CO",
-    "caption": "Security arm with remote access integration.",
-    "tags": ["commercial", "arm", "security"],
-    "createdAt": "2022-01-10",
-    "location": "Lakewood, CO",
-    "featured": true
-  },
-  "security-gate-lakewood.jpg": {
-    "alt": "Security gate protecting commercial lot in Lakewood, CO",
-    "caption": "Security arm with remote access integration.",
-    "tags": ["commercial", "arm", "security"],
-    "createdAt": "2024-07-10",
-    "location": "Lakewood, CO"
-  },
-  "steel-security-gate-boulder.jpg": {
-    "alt": "Steel security gate protecting commercial lot in Boulder, CO",
-    "caption": "Powder-coated steel security gate with remote access integration.",
-    "tags": ["commercial", "slide", "security"],
-    "createdAt": "2024-02-10",
-    "location": "Boulder, CO"
-  },
-  "residential-wood-gate-golden.jpg": {
-    "alt": "Wood and metal residential gate in Golden, CO",
-    "caption": "Decorative wood-frame gate with automated swing operator.",
-    "tags": ["residential", "swing", "decorative"],
-    "createdAt": "2023-04-12",
-    "location": "Golden, CO",
-    "featured": true
-  },
-  "industrial-parking-gate-thornton.jpg": {
-    "alt": "Industrial parking gate in Thornton, CO",
-    "caption": "Automated barrier-arm gate for controlled employee parking.",
-    "tags": ["commercial", "barrier", "automation"],
-    "createdAt": "2019-05-15",
-    "location": "Thornton, CO"
-  },
-  "chain-link-entry-gate-littleton.jpg": {
-    "alt": "Chain link entry gate at residential driveway in Littleton, CO",
-    "caption": "Elegant chainlink design with slide automation.",
-    "tags": ["residential", "slide", "chainlink"],
-    "createdAt": "2020-05-17",
-    "location": "Littleton, CO",
-    "featured": true
-  },
-  "slide-gate-storage-facility-commerce-city.jpg": {
-    "alt": "Slide gate at storage facility in Commerce City, CO",
-    "caption": "Industrial slide gate integrated with keypad and RFID system.",
-    "tags": ["commercial", "slide", "rfid"],
-    "createdAt": "2022-05-18",
-    "location": "Commerce City, CO"
-  },
-  "custom-aluminum-gate-denver.jpg": {
-    "alt": "Custom aluminum gate with minimalist frame in Parker, CO",
-    "caption": "Lightweight aluminum gate with app-based access control.",
-    "tags": ["residential", "swing", "access-control"],
-    "createdAt": "2022-09-20",
-    "location": "Parker, CO",
-    "featured": true
-  },
-  "swing-gate-hoa-entry-centennial.jpg": {
-    "alt": "Automated swing gate at HOA entry in Centennial, CO",
-    "caption": "Dual arm operators with magnetic locks for secure HOA access.",
-    "tags": ["hoa", "swing", "secure"],
-    "createdAt": "2024-07-22",
-    "location": "Centennial, CO"
-  },
-  "chainlink-operator-yard-gate-arvada.jpg": {
-    "alt": "Chainlink yard gate with operator in Arvada, CO",
-    "caption": "Utility yard gate equipped with chainlink privacy slats and motor drive.",
-    "tags": ["industrial", "slide", "chainlink"],
-    "createdAt": "2018-08-24",
-    "location": "Arvada, CO"
-  },
-  "decorative-driveway-gate-castle-rock.jpg": {
-    "alt": "Decorative driveway gate with scrollwork in Castle Rock, CO",
-    "caption": "Custom powder-coated scrollwork gate with underground automation.",
-    "tags": ["residential", "swing", "decorative"],
-    "createdAt": "2017-07-26",
-    "location": "Castle Rock, CO"
-  },
-  "decorative-driveway-powder-coated-gate-castle-rock.jpg": {
-    "alt": "Decorative driveway gate with scrollwork in Castle Rock, CO",
-    "caption": "Custom powder-coated scrollwork gate with underground automation.",
-    "tags": ["residential", "slide", "decorative"],
-    "createdAt": "2017-05-26",
-    "location": "Castle Rock, CO"
-  },
-  "commercial-swing-gate-greeley.jpg": {
-    "alt": "Commercial swing gate for distribution facility in Greeley, CO",
-    "caption": "Steel dual swing gate with vehicle loop sensors and warning strobes.",
-    "tags": ["commercial", "swing", "safety"],
-    "createdAt": "2023-05-28",
-    "location": "Greeley, CO"
-  },
-  "access-control-panel-install-denver.jpg": {
-    "alt": "Access control panel installation in Denver, CO",
-    "caption": "Upgraded access control system with keypad, intercom, and network relay.",
-    "tags": ["access-control", "electrical", "automation"],
-    "createdAt": "2023-04-30",
-    "location": "Denver, CO"
-  },
-  "iron-courtyard-gate-lafayette.jpg": {
-    "alt": "Iron courtyard gate with automation in Lafayette, CO",
-    "caption": "Compact single-swing gate for residential courtyard entry.",
-    "tags": ["residential", "swing", "automation"],
-    "createdAt": "2023-10-01",
-    "location": "Lafayette, CO"
-  },
-  "slide-gate-logistics-yard-englewood.jpg": {
-    "alt": "Slide gate at logistics yard in Englewood, CO",
-    "caption": "Long-span cantilever slide gate designed for semi-truck entry.",
-    "tags": ["commercial", "slide", "heavy-duty"],
-    "createdAt": "2022-10-03",
-    "location": "Englewood, CO"
-  },
-  "safety-loop-installation-denver.jpg": {
-    "alt": "Safety loop installation in Denver, CO",
-    "caption": "In-ground safety loop sensors for automatic gate closure detection.",
-    "tags": ["service", "safety", "automation"],
-    "createdAt": "2025-09-05",
-    "location": "Denver, CO"
-  },
-  "driveway-gate-highlands-ranch.jpg": {
-    "alt": "Modern driveway gate installation in Highlands Ranch, CO",
-    "caption": "Clean aluminum frame gate with integrated keycard access.",
-    "tags": ["residential", "access-control", "modern"],
-    "createdAt": "2025-08-06",
+  "self-storage-ornamental-iron-swing-sentinel-highlands-ranch.jpg": {
+    "alt": "Ornamental iron swing gate with Sentinel Systems access control for self storage in Highlands Ranch, CO",
+    "caption": "Self storage entry with ornamental iron swing gate and Sentinel access control.",
+    "tags": ["self-storage", "swing", "ornamental-iron", "access-control", "sentinel"],
     "location": "Highlands Ranch, CO"
   },
-  "warehouse-gate-fort-collins.jpg": {
-    "alt": "Warehouse entry gate in Fort Collins, CO",
-    "caption": "Industrial slide gate with reflective safety tape and strobe beacon.",
-    "tags": ["commercial", "slide", "safety"],
-    "createdAt": "2024-7-08",
-    "location": "Fort Collins, CO"
-  },
-  "slide-gate-operator-install-denver.jpg": {
-    "alt": "slide gate operator installation in Denver, CO",
-    "caption": "New LiftMaster swing operator setup with dual safety photo eyes.",
-    "tags": ["service", "swing", "maintenance"],
-    "createdAt": "2024-10-09",
+  "aluminum-slide-65x12-up-and-over-install-denver.jpg": {
+    "alt": "Installing a 65’ x 12’ aluminum slide gate up and over perimeter wall in Denver, CO",
+    "caption": "Live install: long-span aluminum slide gate set over perimeter wall.",
+    "tags": ["industrial", "slide", "aluminum", "long-span", "install"],
     "location": "Denver, CO"
   },
-  "automatic-gate-upgrade-lakewood.jpg": {
-    "alt": "Automatic gate upgrade in Lakewood, CO",
-    "caption": "Converted manual gate to full automation with photo eye sensors.",
-    "tags": ["upgrade", "automation", "residential"],
-    "createdAt": "2022-09-10",
+  "custom-ornamental-iron-swing-scrollwork-community-logo-parker.jpg": {
+    "alt": "Custom ornamental iron swing gates with scrollwork and community logo in Parker, CO",
+    "caption": "Decorative scrollwork swing gates featuring community branding.",
+    "tags": ["residential", "swing", "ornamental-iron", "scrollwork", "custom", "decorative"],
+    "location": "Parker, CO"
+  },
+  "bi-parting-ornamental-iron-cantilever-slide-powder-coat-lakewood.jpg": {
+    "alt": "Bi-parting ornamental iron cantilever slide gates powder coated in Lakewood, CO",
+    "caption": "Twin ornamental cantilever slides with durable powder-coat finish.",
+    "tags": ["commercial", "slide", "cantilever", "ornamental-iron", "powder-coat", "bi-parting"],
     "location": "Lakewood, CO"
   },
-  "slide-gate-business-park-westminster.jpg": {
-    "alt": "Slide gate installation at business park in Westminster, CO",
-    "caption": "Commercial slide gate with keycard reader and reflective signage.",
-    "tags": ["commercial", "slide", "access-control"],
-    "createdAt": "2023-08-11",
-    "location": "Westminster, CO"
+  "ornamental-iron-reverse-arch-cantilever-rust-finish-ft-collins.jpg": {
+    "alt": "Ornamental iron bi-parting cantilever slide with reverse arch top and rust finish in Fort Collins, CO",
+    "caption": "Reverse-arch ornamental cantilever slides with H-Brace pedestals and home automation telephone entry.",
+    "tags": ["residential", "slide", "cantilever", "ornamental-iron", "powder-coat", "home-automation", "telephone-entry", "h-brace"],
+    "location": "Fort Collins, CO"
   },
-  "rolling-gate-service-golden.jpg": {
-    "alt": "Rolling gate service in Golden, CO",
-    "caption": "Routine maintenance on rolling steel gate with V-track alignment.",
-    "tags": ["service", "rolling", "maintenance"],
-    "createdAt": "2023-07-12",
-    "location": "Golden, CO"
+  "aluminum-cantilever-entry-exit-hysecurity-video-cctv-henderson.jpg": {
+    "alt": "Entry/Exit aluminum cantilever slide gates with industrial hydraulic HySecurity operators, video call access and CCTV in Henderson, CO",
+    "caption": "Paired aluminum cantilever slide gates with HySecurity operators and integrated video/CCTV.",
+    "tags": ["industrial", "slide", "cantilever", "aluminum", "hysecurity", "cctv", "video-entry", "hydraulic"],
+    "location": "Henderson, CO"
   },
-  "iron-fence-and-gate-cherry-creek.jpg": {
-    "alt": "Iron fence and gate combo in Cherry Creek, CO",
-    "caption": "Matching fence and swing gate with welded steel construction.",
-    "tags": ["residential", "fence", "swing"],
-    "createdAt": "2023-08-13",
-    "location": "Cherry Creek, CO"
+  "ornamental-iron-arch-top-swing-hysecurity-swing-riser-castle-pines.jpg": {
+    "alt": "Custom ornamental iron scrolling arch-top swing gates with HySecurity Swing Riser operators in Castle Pines, CO",
+    "caption": "Arch-top iron swing gates with custom pickets and hydraulic Swing Riser automation.",
+    "tags": ["residential", "swing", "ornamental-iron", "hysecurity", "arch-top", "custom"],
+    "location": "Castle Pines, CO",
+    "featured": true
   },
-  "gate-access-control-panel-broomfield.jpg": {
-    "alt": "Gate access control panel installed in Broomfield, CO",
-    "caption": "Standalone access panel installation with intercom and camera integration.",
-    "tags": ["access-control", "camera", "commercial"],
-    "createdAt": "2021-06-14",
-    "location": "Broomfield, CO"
+  "bi-parting-ornamental-iron-cantilever-hysecurity-cnx-longmont.jpg": {
+    "alt": "Bi-parting ornamental iron cantilever slide gates with HySecurity CNX operators in Longmont, CO",
+    "caption": "Powder-coated bi-parting ornamental cantilever slides with HySecurity CNX.",
+    "tags": ["commercial", "slide", "cantilever", "ornamental-iron", "hysecurity", "cnx", "bi-parting"],
+    "location": "Longmont, CO"
   },
-  "wrought-iron-gate-installation-hoa-denver.jpg": {
-    "alt": "Gate access control panel installed in Golden, CO",
-    "caption": "Standalone access panel installation with intercom.",
-    "tags": ["access-control", "wrought-iron", "commercial"],
-    "createdAt": "2021-11-14",
-    "location": "Golden, CO"
+  "bi-parting-wood-swing-hysecurity-pedestals-aspen.jpg": {
+    "alt": "Bi-parting wood swing gate system with HySecurity Swing Smart operators on steel pedestals in Aspen, CO",
+    "caption": "Cedar-style bi-parting wood swing gates with HySecurity automation.",
+    "tags": ["residential", "swing", "wood", "hysecurity", "pedestal"],
+    "location": "Aspen, CO",
+    "featured": true
+  },
+  "hysecurity-strongarm-park-led-longmont.jpg": {
+    "alt": "HySecurity StrongArm Park barrier with LED aluminum arm in Longmont, CO",
+    "caption": "LED-lit StrongArm barrier for parking and perimeter control.",
+    "tags": ["barrier-arm", "hysecurity", "parking", "industrial", "led"],
+    "location": "Longmont, CO"
+  },
+  "sequenced-barrier-plus-swing-opentech-arvada.jpg": {
+    "alt": "Sequenced bi-parting barrier arm system with ornamental iron swing gate and OpenTech Alliance access control in Arvada, CO",
+    "caption": "Synchronized barrier arms and swing gate with OpenTech access.",
+    "tags": ["barrier-arm", "swing", "ornamental-iron", "opentech", "sequenced", "access-control"],
+    "location": "Arvada, CO"
+  },
+  "ornamental-iron-cantilever-welded-wire-card-reader-denver.jpg": {
+    "alt": "Ornamental iron cantilever slide gate with welded wire screen and card reader access in Denver, CO",
+    "caption": "Powder-coated iron cantilever slide with welded wire infill and card access.",
+    "tags": ["industrial", "slide", "cantilever", "ornamental-iron", "welded-wire", "card-reader", "access-control"],
+    "location": "Denver, CO"
+  },
+  "aluminum-cantilever-cedar-infill-hysecurity-hd25-safety.jpg": {
+    "alt": "Aluminum cantilever slide gate with cedar infill and HySecurity HD25 operator with photo eye and loops",
+    "caption": "Cedar-infill aluminum cantilever slide with HD25 operator, H-Brace, photo eye and vehicle loops.",
+    "tags": ["commercial", "slide", "cantilever", "aluminum", "cedar", "hysecurity", "hd25", "safety"],
+    "location": "Commerce City, CO",
+    "featured": true
+  },
+  "self-storage-ornamental-iron-cantilever-liftmaster-csl24u-commerce-city.jpg": {
+    "alt": "Ornamental iron cantilever slide with LiftMaster CSL24U and Sentinel Systems access control in Commerce City, CO",
+    "caption": "Self storage cantilever slide with LiftMaster CSL24U and Sentinel keypad.",
+    "tags": ["self-storage", "slide", "cantilever", "ornamental-iron", "liftmaster", "csl24u", "sentinel", "access-control"],
+    "location": "Commerce City, CO"
+  },
+  "aluminum-enclosed-track-cantilever-chainlink-barbwire-colorado-springs.jpg": {
+    "alt": "Aluminum enclosed-track cantilever gate with chain-link infill and barbed wire in Colorado Springs, CO",
+    "caption": "Single enclosed-track aluminum cantilever with chain-link and barb wire.",
+    "tags": ["industrial", "slide", "cantilever", "aluminum", "enclosed-track", "chain-link", "security"],
+    "location": "Colorado Springs, CO"
+  },
+  "chainlink-cantilever-hysecurity-dc15-opentech-bollards-loveland.jpg": {
+    "alt": "Chain-link cantilever slide with HySecurity SlideSmart DC15, OpenTech keypad and protective bollards in Loveland, CO",
+    "caption": "Secure chain-link cantilever with DC15 operator, keypad entry and bollards.",
+    "tags": ["industrial", "slide", "cantilever", "chain-link", "hysecurity", "dc15", "opentech", "bollards"],
+    "location": "Loveland, CO"
+  },
+  "bi-parting-ornamental-iron-swing-cedar-hysecurity-dc20-locinox-denver.jpg": {
+    "alt": "Bi-parting ornamental iron swing gates with cedar infill and HySecurity SwingSmart DC20 plus Locinox closer in Denver, CO",
+    "caption": "Cedar-infill iron swing gates with DC20 operators, loops, photo eyes and matching pedestrian gate.",
+    "tags": ["residential", "swing", "ornamental-iron", "cedar", "hysecurity", "dc20", "locinox", "safety"],
+    "location": "Denver, CO"
+  },
+  "ornamental-arch-top-swing-hysecurity-dc20-doorking-1835-littleton.jpg": {
+    "alt": "Ornamental arch-top entry/exit swing gates with HySecurity DC20 and DoorKing 1835 in Littleton, CO",
+    "caption": "Community entry swing gates with DC20 operators and DoorKing telephone entry.",
+    "tags": ["hoa", "swing", "ornamental-iron", "arch-top", "hysecurity", "doorking", "access-control"],
+    "location": "Littleton, CO"
+  },
+  "ornamental-iron-swing-gate-decorative-columns.jpg": {
+    "alt": "Custom ornamental iron automated swing gate with decorative stone columns in Genesee, CO",
+    "caption": "Custom-built ornamental iron automated swing gate featuring decorative stone columns and keypad entry, blending security with elegant design.",
+    "tags": ["residential", "swing", "ornamental-iron", "automated", "electric-gate", "decorative", "stone-columns", "colorado"],
+    "createdAt": "2025-02-10",
+    "location": "Genesee, CO",
+    "featured": true
   }
+
 }
