@@ -12,9 +12,12 @@ declare global {
   }
 }
 
+type QuoteResult = { ok: boolean; message?: string; error?: string };
 
 export default function QuoteForm() {
   const [status, setStatus] = useState<'idle'|'sending'|'sent'|'error'>('idle');
+  const [notice, setNotice] = useState<string | null>(null);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [ready, setReady] = useState(false);
   const siteKey = process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY || '';
 
@@ -32,6 +35,8 @@ export default function QuoteForm() {
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (status === 'sending') return;
+    setNotice(null);
+    setErrorMsg(null);
     if (!siteKey) { alert('reCAPTCHA not configured.'); return; }
 
     const token = getToken();
@@ -46,14 +51,18 @@ export default function QuoteForm() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...payload, recaptchaToken: token })
       });
-      if (!r.ok) throw new Error('Request failed');
+            const data = (await r.json()) as QuoteResult;
+      if (!r.ok || !data.ok) throw new Error(data.error || 'Request failed');
+
       setStatus('sent');
+      setNotice(data.message ?? 'Thanks! Your request was sent. We’ll follow up shortly.');
       e.currentTarget.reset();
       window.grecaptcha?.reset?.();
       setTimeout(() => setStatus('idle'), 4000);
-    } catch {
+    } catch (err: unknown) {
       setStatus('error');
       setTimeout(() => setStatus('idle'), 3000);
+      setErrorMsg(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
     }
   }
 
@@ -72,6 +81,17 @@ export default function QuoteForm() {
         onSubmit={onSubmit}
         className="rounded-2xl z-51 bg-brand-dark/95 border border-white/10 p-6 md:p-8 grid gap-5"
       >
+        {/* Success / Error banners */}
+        {notice && (
+          <div className="rounded-xl border border-emerald-500/30 bg-emerald-500/10 p-3 text-emerald-200">
+            {notice}
+          </div>
+        )}
+        {errorMsg && (
+          <div className="rounded-xl border border-red-500/30 bg-red-500/10 p-3 text-red-200">
+            {errorMsg}
+          </div>
+        )}
         {/* Honeypot */}
         <input name="company" tabIndex={-1} autoComplete="off" className="hidden" aria-hidden="true" />
 

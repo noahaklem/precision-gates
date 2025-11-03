@@ -109,10 +109,10 @@ ${message || '-'}
 
     if (!key) {
       console.log('Quote request (no SENDGRID_API_KEY set):', { name, email, phone, address, type, message })
-      return NextResponse.json({ ok: true })
+      return NextResponse.json({ ok: true, message: 'Thanks! We received your request.' })
     }
 
-    const sendgridPayload = {
+    const notifyPayload = {
       personalizations: [{ to: [{ email: to }], subject: 'New Quote Request' }],
       from: { email: fromEmail, name: fromName },
       reply_to: { email, name },
@@ -122,13 +122,24 @@ ${message || '-'}
       ],
     }
 
+    const notifyRes = await fetch('https://api.sendgrid.com/v3/mail/send', {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify(notifyPayload),
+    });
+    if (!notifyRes.ok) {
+      const errBody = await notifyRes.text().catch(() => '');
+      console.error('SendGrid (notify) error', notifyRes.status, errBody);
+      return NextResponse.json({ ok: false, error: 'Email delivery failed' }, { status: 502 });
+    }
+
     const sg = await fetch('https://api.sendgrid.com/v3/mail/send', {
       method: 'POST',
       headers: {
         Authorization: `Bearer ${key}`,
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(sendgridPayload),
+      body: JSON.stringify(notifyPayload),
     })
 
     if (!sg.ok) {
@@ -137,10 +148,62 @@ ${message || '-'}
       return NextResponse.json({ ok: false, error: 'Email delivery failed' }, { status: 502 })
     }
 
-    return NextResponse.json({ ok: true })
+    const confirmText = `
+    Hi ${name},
+
+    Thanks for reaching out to Precision Gates & Automation — we’ve received your request and will follow up shortly.
+
+    Summary:
+    - Email: ${email}
+    - Phone: ${phone || '-'}
+    - Address: ${address || '-'}
+    - Project Type: ${type || '-'}
+
+    Message:
+    ${message || '-'}
+
+    If anything looks off, just reply to this email.
+
+    — Precision Gates & Automation
+    `.trim();
+
+        const confirmHtml = `
+    <p>Hi ${escapeHtml(name)},</p>
+    <p>Thanks for reaching out to <strong>Precision Gates &amp; Automation</strong> — we’ve received your request and will follow up shortly.</p>
+    <p><strong>Summary</strong></p>
+    <ul>
+      <li>Email: ${escapeHtml(email)}</li>
+      <li>Phone: ${escapeHtml(phone || '-')}</li>
+      <li>Address: ${escapeHtml(address || '-')}</li>
+      <li>Project Type: ${escapeHtml(type || '-')}</li>
+    </ul>
+    <p><strong>Message</strong></p>
+    <pre style="white-space:pre-wrap;font-family:inherit;background:#f6f6f6;padding:12px;border-radius:8px;">${escapeHtml(message || '-')}</pre>
+    <p>If anything looks off, just reply to this email.</p>
+    <p>— Precision Gates &amp; Automation</p>
+    `.trim();
+
+    const confirmPayload = {
+      personalizations: [{ to: [{ email }], subject: 'We received your quote request' }],
+      from: { email: fromEmail, name: fromName },
+      reply_to: { email: to, name: fromName }, // replies come to you
+      content: [
+        { type: 'text/plain', value: confirmText },
+        { type: 'text/html', value: confirmHtml }
+      ],
+    };
+
+    // Fire-and-forget confirmation; don’t fail the whole request if this part fails
+    fetch('https://api.sendgrid.com/v3/mail/send', {
+      method: 'POST',
+      headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
+      body: JSON.stringify(confirmPayload),
+    }).catch(err => console.warn('SendGrid (confirm) error', err));
+
+    return NextResponse.json({ ok: true, message: 'Thanks! Your request was sent. We’ll follow up shortly.' });
   } catch (err) {
-    console.error(err)
-    return NextResponse.json({ ok: false, error: 'Server error' }, { status: 500 })
+    console.error(err);
+    return NextResponse.json({ ok: false, error: 'Server error' }, { status: 500 });
   }
 }
 
