@@ -1,12 +1,13 @@
 // app/components/WhyUs.tsx
 export default function WhyUs() {
   const items = [
-    'Clean welds, powder coat options',
-    'Code-compliant loops & photo eyes',
-    'Neat control panels',
+    'Powder coat and protective options',
+    'UL325 compliant safety standards',
+    'Professional designs & layouts',
     'Access control: keypad, RFID, Intercom',
     'Preventative maintenance plans',
-    'Licensed • Insured • Background-checked'
+    'Licensed • Insured • Background-checked',
+    'Quality fabrication & installation',
   ];
   return (
     <section className="container">

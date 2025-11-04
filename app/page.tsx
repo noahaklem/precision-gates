@@ -69,25 +69,34 @@ export default async function Page(){
         </div>
         <QuoteForm />
       </section>
-      <section id="service-areas" className="section-tight container text-gray-700 border border-black/10">
+      <section
+        id="service-areas"
+        className="section-tight container text-gray-700 border border-black/10"
+      >
         <h2 className="text-3xl font-semibold">Service Areas</h2>
         <p className="text-gray-400 mt-2 max-w-3xl">
-          We proudly serve homeowners, HOAs, and businesses across Colorado.
+          Precision Gates &amp; Automation proudly provides professional gate and access-control services
+          throughout Colorado and the surrounding region. Our team regularly serves residential,
+          commercial, and HOA clients across:
         </p>
         <ul className="grid sm:grid-cols-2 md:grid-cols-3 gap-3 mt-6 text-gray-500">
-          <li>Denver</li>
-          <li>Aurora</li>
-          <li>Littleton</li>
-          <li>Highlands Ranch</li>
-          <li>Lakewood</li>
-          <li>Arvada</li>
-          <li>Westminster</li>
-          <li>Parker</li>
-          <li>Castle Rock</li>
+          <li>Colorado Front Range</li>
+          <li>Denver Metro Area</li>
           <li>Boulder</li>
-          <li>Commerce City</li>
-          <li>Englewood</li>
+          <li>Colorado Springs</li>
+          <li>Fort Collins</li>
+          <li>Golden</li>
+          <li>Castle Rock</li>
+          <li>Loveland</li>
+          <li>Wyoming</li>
+          <li>Utah</li>
+          <li>Nebraska</li>
+          <li>New Mexico</li>
         </ul>
+        <p className="text-gray-400 mt-6 max-w-3xl">
+          Based in Colorado, we’re licensed and equipped to handle projects across neighboring states—
+          offering the same precision, safety, and reliability wherever your property is located.
+        </p>
       </section>
     </>
   )

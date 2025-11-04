@@ -21,7 +21,7 @@ export default function Footer() {
         <div>
           <h3 className="font-semibold text-white">Hours</h3>
           <p className="mt-2 text-gray-400">Mon–Fri: 9am–5pm</p>
-          <p className="text-gray-400">Emergency repairs available</p>
+          <p className="text-gray-400">Same Day Service Available</p>
         </div>
       </div>
 
