@@ -10,45 +10,51 @@ export async function GET() {
     ? await fs.promises.readdir(galleryDir)
     : [];
 
+  // only image files
   const images = files.filter((f) => /\.(jpe?g|png|webp)$/i.test(f));
-
   const now = new Date().toISOString();
 
-  // Main site sections
-  const baseUrls = [
-    { loc: `${site}/`, priority: "1.0" },
-    { loc: `${site}/#services`, priority: "0.9" },
-    { loc: `${site}/#gallery`, priority: "0.8" },
-    { loc: `${site}/#about`, priority: "0.7" },
-    { loc: `${site}/#contact`, priority: "0.7" },
+  // Primary crawlable routes (no hash anchors)
+  const pageUrls = [
+    { loc: `${site}/`, priority: "1.0", lastmod: now },
+    { loc: `${site}/services`, priority: "0.9", lastmod: now },
+    { loc: `${site}/gallery`, priority: "0.85", lastmod: now },
+    { loc: `${site}/about`, priority: "0.7", lastmod: now },
+    { loc: `${site}/contact`, priority: "0.7", lastmod: now },
+    { loc: `${site}/service-areas`, priority: "0.7", lastmod: now },
   ];
 
-  // Generate image URLs for sitemap
-  const galleryUrls = images.map((f) => ({
-    loc: `${site}/gallery/${encodeURIComponent(f)}`,
-    priority: "0.5",
-  }));
-
-  const urls = [...baseUrls, ...galleryUrls];
+  // Build <image:image> tags once so we can include them under
+  // the homepage and the /gallery listing page.
+  const imageTags = images
+    .map((f) => {
+      const loc = `${site}/gallery/${encodeURIComponent(f)}`;
+      return `<image:image><image:loc>${loc}</image:loc></image:image>`;
+    })
+    .join("");
 
   const xml =
     `<?xml version="1.0" encoding="UTF-8"?>` +
     `<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" ` +
-    `xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">` +
-    urls
-      .map(
-        (u) =>
-          `<url>
-            <loc>${u.loc}</loc>
-            <lastmod>${now}</lastmod>
-            <priority>${u.priority}</priority>
-          </url>`
-      )
-      .join("") +
+      `xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">` +
+      pageUrls
+        .map((u) => {
+          // Attach images only to home and gallery pages (discovery + size control)
+          const withImages =
+            u.loc === `${site}/` || u.loc === `${site}/gallery` ? imageTags : "";
+          return (
+            `<url>` +
+              `<loc>${u.loc}</loc>` +
+              `<lastmod>${u.lastmod}</lastmod>` +
+              `<priority>${u.priority}</priority>` +
+              withImages +
+            `</url>`
+          );
+        })
+        .join("") +
     `</urlset>`;
 
-  return new Response(xml, {
-    headers: { "Content-Type": "application/xml" },
-  });
+  return new Response(xml, { headers: { "Content-Type": "application/xml" } });
 }
+
 
