@@ -81,31 +81,31 @@ export async function POST(req: Request) {
     const fromName = 'Precision Gates Information Request'
 
     const text = `
-New Quote Request
+      New Quote Request
 
-Name:    ${name}
-Email:   ${email}
-Phone:   ${phone || '-'}
-Address: ${address || '-'}
+      Name:    ${name}
+      Email:   ${email}
+      Phone:   ${phone || '-'}
+      Address: ${address || '-'}
 
-Type:    ${type || '-'}
+      Type:    ${type || '-'}
 
-Message:
-${message || '-'}
-`.trim()
+      Message:
+      ${message || '-'}
+      `.trim()
 
-    const html = `
-<h2 style="margin:0 0 12px;font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial">New Quote Request</h2>
-<table cellspacing="0" cellpadding="6" style="border-collapse:collapse;font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial">
-  <tr><td><strong>Name</strong></td><td>${escapeHtml(name)}</td></tr>
-  <tr><td><strong>Email</strong></td><td>${escapeHtml(email)}</td></tr>
-  <tr><td><strong>Phone</strong></td><td>${escapeHtml(phone || '-')}</td></tr>
-  <tr><td><strong>Address</strong></td><td>${escapeHtml(address || '-')}</td></tr>
-  <tr><td><strong>Type</strong></td><td>${escapeHtml(type || '-')}</td></tr>
-</table>
-<p style="margin:16px 0 6px;font-weight:600">Message</p>
-<pre style="white-space:pre-wrap;font-family:inherit;background:#f6f6f6;padding:12px;border-radius:8px;">${escapeHtml(message || '-')}</pre>
-`.trim()
+      const html = `
+      <h2 style="margin:0 0 12px;font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial">New Quote Request</h2>
+      <table cellspacing="0" cellpadding="6" style="border-collapse:collapse;font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial">
+        <tr><td><strong>Name</strong></td><td>${escapeHtml(name)}</td></tr>
+        <tr><td><strong>Email</strong></td><td>${escapeHtml(email)}</td></tr>
+        <tr><td><strong>Phone</strong></td><td>${escapeHtml(phone || '-')}</td></tr>
+        <tr><td><strong>Address</strong></td><td>${escapeHtml(address || '-')}</td></tr>
+        <tr><td><strong>Type</strong></td><td>${escapeHtml(type || '-')}</td></tr>
+      </table>
+      <p style="margin:16px 0 6px;font-weight:600">Message</p>
+      <pre style="white-space:pre-wrap;font-family:inherit;background:#f6f6f6;padding:12px;border-radius:8px;">${escapeHtml(message || '-')}</pre>
+      `.trim()
 
     if (!key) {
       console.log('Quote request (no SENDGRID_API_KEY set):', { name, email, phone, address, type, message })
@@ -127,26 +127,14 @@ ${message || '-'}
       headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
       body: JSON.stringify(notifyPayload),
     });
+
     if (!notifyRes.ok) {
       const errBody = await notifyRes.text().catch(() => '');
       console.error('SendGrid (notify) error', notifyRes.status, errBody);
       return NextResponse.json({ ok: false, error: 'Email delivery failed' }, { status: 502 });
     }
 
-    const sg = await fetch('https://api.sendgrid.com/v3/mail/send', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${key}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(notifyPayload),
-    })
 
-    if (!sg.ok) {
-      const errBody = await sg.text().catch(() => '')
-      console.error('SendGrid error', sg.status, errBody)
-      return NextResponse.json({ ok: false, error: 'Email delivery failed' }, { status: 502 })
-    }
 
     const confirmText = `
     Hi ${name},
