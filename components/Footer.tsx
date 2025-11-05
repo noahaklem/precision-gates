@@ -39,6 +39,16 @@ export default function Footer() {
             <li><Link href="/services#access-control" className="hover:text-white">Access Control</Link></li>
             <li><Link href="/services#repairs" className="hover:text-white">Repairs &amp; Maintenance</Link></li>
             <li><Link href="/reviews" className="hover:text-white">Reviews</Link></li>
+            <li>            
+              <a
+                href="https://g.page/r/CUeakO8C5B1uEBM/review"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center px-4 py-2 rounded-lg bg-white text-black hover:bg-gray-200 transition"
+              >
+              Leave a Google Review
+              </a>
+            </li>
           </ul>
         </nav>
 
