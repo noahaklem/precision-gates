@@ -12,7 +12,7 @@ export default function Footer() {
       <div className="container py-12 grid gap-10 md:grid-cols-4 text-sm text-gray-300">
         {/* Brand */}
         <div>
-          <h3 className="font-semibold text-white">Precision Gates &amp; Automation</h3>
+          <h3 className="font-semibold text-white"><Link href="/" className="hover:text-white">Precision Gates &amp; Automation</Link></h3>
           <p className="mt-2 text-gray-400">
             Automated gates, access control, and rapid repairs across Colorado &amp; neighboring states.
           </p>
@@ -38,6 +38,7 @@ export default function Footer() {
             <li><Link href="/services#commercial" className="hover:text-white">Commercial &amp; Industrial</Link></li>
             <li><Link href="/services#access-control" className="hover:text-white">Access Control</Link></li>
             <li><Link href="/services#repairs" className="hover:text-white">Repairs &amp; Maintenance</Link></li>
+            <li><Link href="/reviews" className="hover:text-white">Reviews</Link></li>
           </ul>
         </nav>
 
@@ -76,6 +77,16 @@ export default function Footer() {
       <div className="border-t border-white/10 py-6">
         <div className="container flex flex-wrap items-center justify-between gap-4 text-xs text-gray-500">
           <p>© {new Date().getFullYear()} Precision Gates &amp; Automation. All rights reserved.</p>
+          <div className="flex gap-4">
+            <a
+              href="https://g.page/r/CUeakO8C5B1uEBM/review"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center px-4 py-2 rounded-lg bg-white text-black hover:bg-gray-200 transition"
+            >
+              Leave a Google Review
+            </a>
+          </div>
           <div className="flex gap-4">
             <Link href="/sitemap.xml" className="hover:text-white">Sitemap</Link>
             <Link href="/robots.txt" className="hover:text-white">Robots</Link>

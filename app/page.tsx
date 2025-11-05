@@ -93,19 +93,34 @@ export default async function Page(){
         </div>
         <QuoteForm />
       </section>
-      <section id="service-areas" className="section-tight container text-gray-700 border border-black/10">
-        <h2 className="text-3xl font-semibold">Service Areas</h2>
-        <p className="text-gray-400 mt-2 max-w-3xl">
-          Precision Gates &amp; Automation serves Colorado and surrounding states. Regular coverage includes:
+      <section
+        id="service-areas"
+        className="section-tight container border border-white/10 bg-brand-dark rounded-2xl p-8"
+      >
+        <h2 className="text-3xl font-semibold text-white">Service Areas</h2>
+
+        <p className="text-gray-300 mt-2 max-w-3xl">
+          Precision Gates &amp; Automation proudly serves Colorado and neighboring states.
+          We work with residential, commercial, and HOA clients across:
         </p>
-        <ul className="grid sm:grid-cols-2 md:grid-cols-3 gap-3 mt-6 text-gray-500">
-          <li>Denver Metro</li><li>Colorado Front Range</li><li>Boulder</li>
-          <li>Colorado Springs</li><li>Fort Collins</li><li>Golden</li>
-          <li>Castle Rock</li><li>Loveland</li><li>Wyoming</li>
-          <li>Utah</li><li>Nebraska</li><li>New Mexico</li>
+
+        <ul className="grid sm:grid-cols-2 md:grid-cols-3 gap-3 mt-6 text-gray-400">
+          <li>Denver Metro</li>
+          <li>Colorado Front Range</li>
+          <li>Boulder</li>
+          <li>Colorado Springs</li>
+          <li>Fort Collins</li>
+          <li>Golden</li>
+          <li>Castle Rock</li>
+          <li>Loveland</li>
+          <li>Wyoming</li>
+          <li>Utah</li>
+          <li>Nebraska</li>
+          <li>New Mexico</li>
         </ul>
+
         <p className="text-gray-400 mt-6 max-w-3xl">
-          Licensed and equipped for regional projects—same precision, safety, and reliability wherever you are.
+          Fully licensed, insured, and equipped for regional work — delivering the same precision, safety, and reliability wherever your project is located.
         </p>
       </section>
     </>
