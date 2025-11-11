@@ -52,6 +52,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ ok:false, error:'Captcha not configured' }, { status: 500 })
     }
     if (!token) {
+      console.warn('[reCAPTCHA] Missing recaptcha token from client');
       return NextResponse.json({ ok:false, error:'Captcha required' }, { status: 400 })
     }
 
@@ -60,18 +61,28 @@ export async function POST(req: Request) {
     const params = new URLSearchParams({ secret, response: token })
     if (fwd) params.set('remoteip', fwd)
 
-    const verifyRes = await fetch('https://www.google.com/recaptcha/api/siteverify', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-      body: params,
-    })
-    const verify = await verifyRes.json() as {
-      success: boolean; challenge_ts?: string; hostname?: string; 'error-codes'?: string[]
+    let verify;
+    try {
+      const verifyRes = await fetch('https://www.google.com/recaptcha/api/siteverify', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: params,
+      });
+      verify = await verifyRes.json(); // { success, challenge_ts, hostname, 'error-codes': [...] }
+    } catch (e) {
+      console.error('[reCAPTCHA] siteverify fetch failed:', e);
+      return NextResponse.json({ ok: false, error: 'Captcha verification error' }, { status: 502 });
     }
 
-    if (!verify.success) {
-      console.warn('reCAPTCHA v2 failed', verify)
-      return NextResponse.json({ ok:false, error:'Captcha verification failed' }, { status: 400 })
+    if (!verify?.success) {
+      console.warn('[reCAPTCHA] verification failed', {
+        verify,
+        note: 'Common: wrong secret/site key pair, wrong version, or domain not allowed',
+      });
+      return NextResponse.json(
+        { ok: false, error: 'Captcha verification failed' },
+        { status: 400 }
+      );
     }
     // --- end reCAPTCHA v2 verification ---
 

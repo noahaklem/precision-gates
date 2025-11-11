@@ -138,9 +138,17 @@
   "ornamental-iron-swing-gate-decorative-columns.jpg": {
     "alt": "Custom ornamental iron automated swing gate with decorative stone columns in Genesee, CO",
     "caption": "Custom-built ornamental iron automated swing gate featuring decorative stone columns and keypad entry, blending security with elegant design.",
-    "tags": ["residential", "swing", "ornamental-iron", "automated", "electric-gate", "decorative", "stone-columns", "colorado"],
+    "tags": ["residential", "swing", "ornamental-iron", "automated", "access-control", "estate-entrance", "commercial-grade", "colorado"],
     "createdAt": "2025-02-10",
     "location": "Genesee, CO",
+    "featured": true
+  },
+  "vertical-pivot-ranch-gate-parlay-ranch-granby.jpg": {
+    "alt": "Vertical pivot ranch gate at Parlay Ranch in Granby, Colorado.",
+    "caption": "Custom vertical pivot ranch gate installed at Parlay Ranch in Granby, Colorado. Built for durability, large vehicle access, and remote automation in seasonal mountain conditions.",
+    "tags": ["residential", "vertical-pivot-gate", "ranch-gate", "automated", "electric-gate", "decorative", "colorado"],
+    "createdAt": "2025-02-10",
+    "location": "Parlay Ranch, Granby, CO",
     "featured": true
   }
 
