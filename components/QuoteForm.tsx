@@ -35,8 +35,12 @@ export default function QuoteForm() {
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (status === 'sending') return;
+
+    const formEl = e.currentTarget;        // <- capture real element now
+
     setNotice(null);
     setErrorMsg(null);
+
     if (!siteKey) { alert('reCAPTCHA not configured.'); return; }
 
     const token = getToken();
@@ -44,27 +48,33 @@ export default function QuoteForm() {
 
     setStatus('sending');
     try {
-      const form = new FormData(e.currentTarget);
+      const form = new FormData(formEl);   // <- use captured element
       const payload = Object.fromEntries(form.entries());
+
       const r = await fetch('/api/quote', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ ...payload, recaptchaToken: token })
       });
-            const data = (await r.json()) as QuoteResult;
+
+      const data = (await r.json()) as QuoteResult;
       if (!r.ok || !data.ok) throw new Error(data.error || 'Request failed');
 
       setStatus('sent');
       setNotice(data.message ?? 'Thanks! Your request was sent. We’ll follow up shortly.');
-      e.currentTarget.reset();
-      window.grecaptcha?.reset?.();
+
+      // safe resets
+      try { formEl.reset(); } catch {}
+      try { window.grecaptcha?.reset?.(); } catch {}
+
       setTimeout(() => setStatus('idle'), 4000);
     } catch (err: unknown) {
       setStatus('error');
-      setTimeout(() => setStatus('idle'), 3000);
       setErrorMsg(err instanceof Error ? err.message : 'Something went wrong. Please try again.');
+      setTimeout(() => setStatus('idle'), 3000);
     }
   }
+
 
   // one place for consistent field styling
   const field =
