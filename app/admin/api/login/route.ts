@@ -7,7 +7,7 @@ export async function POST(req: Request) {
   const next = String(form.get('next') || '/admin')
 
   const u = process.env.ADMIN_USER || ''
-  const p = process.env.ADMIN_PASS || ''
+  const p = process.env.ADMIN_PASSWORD || ''
 
   if (username === u && password === p) {
     const res = NextResponse.json({ ok: true, next })
